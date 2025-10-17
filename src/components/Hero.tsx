@@ -32,8 +32,6 @@ const Hero: React.FC = () => {
   ];
 
   useEffect(() => {
-    console.log(isDark);
-
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -52,42 +50,38 @@ const Hero: React.FC = () => {
 
   return (
     <div
-      className="min-h-screen transition-colors duration-500"
-      style={{
-        backgroundColor: isDark ? "#111827" : "#f8f9fa",
-        color: isDark ? "#f8f9fa" : "#111827",
-      }}
+      className={`min-h-screen transition-colors duration-500 ${
+        isDark
+          ? "bg-lightbackground text-lighttext"
+          : "bg-darkbackground text-darktext"
+      }`}
     >
       {/* Navbar */}
       <nav
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-        style={{
-          backgroundColor: scrolled
-            ? isDark
-              ? "rgba(17, 24, 39, 0.95)"
-              : "rgba(248, 249, 250, 0.95)"
-            : "transparent",
-          backdropFilter: scrolled ? "blur(12px)" : "none",
-          boxShadow: scrolled ? "0 4px 6px -1px rgba(0, 0, 0, 0.1)" : "none",
-        }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? `${
+                isDark ? "bg-lightbackground/95" : "bg-darkbackground/95"
+              } backdrop-blur-md shadow-lg`
+            : "bg-transparent"
+        }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center space-x-2">
               <div className="relative">
+                <div className="w-10 h-10 bg-orange-500 rounded-lg transform -rotate-12 transition-colors"></div>
                 <div
-                  className="w-10 h-10 rounded-lg transform -rotate-12 transition-colors"
-                  style={{ backgroundColor: "#f97316" }}
-                ></div>
-                <div
-                  className="w-10 h-10 rounded-lg absolute top-0 left-0 transform rotate-12 opacity-70 transition-colors"
-                  style={{ backgroundColor: isDark ? "#6ee7b7" : "#10b981" }}
+                  className={`w-10 h-10 rounded-lg absolute top-0 left-0 transform rotate-12 opacity-70 transition-colors ${
+                    isDark ? "bg-lightaccent" : "bg-darkaccent"
+                  }`}
                 ></div>
               </div>
               <span
-                className="text-2xl font-bold transition-colors"
-                style={{ color: isDark ? "#f8f9fa" : "#111827" }}
+                className={`text-2xl font-bold transition-colors ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
               >
                 Noory
               </span>
@@ -97,39 +91,41 @@ const Hero: React.FC = () => {
             <div className="hidden md:flex items-center space-x-8">
               <a
                 href="#home"
-                className="font-medium transition-colors border-b-2 pb-1"
-                style={{
-                  color: isDark ? "#f8f9fa" : "#111827",
-                  borderColor: "#f97316",
-                }}
+                className={`font-medium transition-colors border-b-2 border-orange-500 pb-1 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
               >
                 Home
               </a>
               <a
                 href="#about"
-                className="font-medium transition-colors hover:opacity-80"
-                style={{ color: isDark ? "#e5e7eb" : "#6b7280" }}
+                className={`font-medium transition-colors hover:opacity-80 ${
+                  isDark ? "text-gray-300" : "text-gray-600"
+                }`}
               >
                 About
               </a>
               <a
                 href="#how-it-works"
-                className="font-medium transition-colors hover:opacity-80"
-                style={{ color: isDark ? "#e5e7eb" : "#6b7280" }}
+                className={`font-medium transition-colors hover:opacity-80 ${
+                  isDark ? "text-gray-300" : "text-gray-600"
+                }`}
               >
                 How It Works
               </a>
               <a
                 href="#partnership"
-                className="font-medium transition-colors hover:opacity-80"
-                style={{ color: isDark ? "#e5e7eb" : "#6b7280" }}
+                className={`font-medium transition-colors hover:opacity-80 ${
+                  isDark ? "text-gray-300" : "text-gray-600"
+                }`}
               >
                 Partnership
               </a>
               <a
                 href="#contact"
-                className="font-medium transition-colors hover:opacity-80"
-                style={{ color: isDark ? "#e5e7eb" : "#6b7280" }}
+                className={`font-medium transition-colors hover:opacity-80 ${
+                  isDark ? "text-gray-300" : "text-gray-600"
+                }`}
               >
                 Contact
               </a>
@@ -143,10 +139,6 @@ const Hero: React.FC = () => {
                     ? "bg-darkaccent text-lighttext"
                     : "bg-lightaccent text-darktext"
                 }`}
-                // style={{
-                //   backgroundColor: "#f97316",
-                //   color: "#111827",
-                // }}
               >
                 Join Waitlist
               </button>
@@ -154,8 +146,8 @@ const Hero: React.FC = () => {
                 onClick={() => setIsDark(!isDark)}
                 className={`p-2 rounded-full transition-colors ${
                   isDark
-                    ? "bg-darkbackground text-darktext"
-                    : "bg-lightbackground text-lighttext"
+                    ? "bg-lightprybackground text-yellow-400"
+                    : "bg-darkprybackground text-gray-700"
                 }`}
               >
                 {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -172,22 +164,21 @@ const Hero: React.FC = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1
-                className="text-6xl md:text-7xl font-bold leading-tight transition-colors"
-                style={{ color: isDark ? "#f8f9fa" : "#111827" }}
+                className={`text-4xl md:text-2xl font-bold leading-tight transition-colors ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
               >
                 Food that{" "}
-                <span
-                  className="inline-block animate-pulse"
-                  style={{ color: "#f97316" }}
-                >
+                <span className="text-orange-500 inline-block animate-pulse">
                   brings joy
                 </span>
               </h1>
             </div>
 
             <p
-              className="text-xl leading-relaxed transition-colors"
-              style={{ color: isDark ? "#e5e7eb" : "#6b7280" }}
+              className={`text-xl leading-relaxed transition-colors ${
+                isDark ? "text-gray-300" : "text-gray-600"
+              }`}
             >
               Nigeria's leading mobile-first food platform. Quality meals made
               accessible, reliable, and delightful for everyone.
@@ -197,11 +188,11 @@ const Hero: React.FC = () => {
             <div className="flex flex-wrap gap-4">
               <a
                 href="https://apps.apple.com"
-                className="flex items-center space-x-3 px-6 py-3 rounded-xl border-2 transition-all hover:scale-105"
-                style={{
-                  borderColor: isDark ? "#374151" : "#d1d5db",
-                  backgroundColor: isDark ? "#1f2937" : "#ffffff",
-                }}
+                className={`flex items-center space-x-3 px-6 py-3 rounded-xl border-2 transition-all hover:scale-105 ${
+                  isDark
+                    ? "border-gray-700 bg-lightprybackground hover:bg-gray-700"
+                    : "border-gray-300 bg-white hover:bg-gray-50"
+                }`}
               >
                 <svg
                   className="w-8 h-8"
@@ -212,14 +203,16 @@ const Hero: React.FC = () => {
                 </svg>
                 <div className="text-left">
                   <div
-                    className="text-xs"
-                    style={{ color: isDark ? "#9ca3af" : "#6b7280" }}
+                    className={`text-xs ${
+                      isDark ? "text-gray-400" : "text-gray-500"
+                    }`}
                   >
                     Download on the
                   </div>
                   <div
-                    className="text-lg font-semibold"
-                    style={{ color: isDark ? "#f8f9fa" : "#111827" }}
+                    className={`text-lg font-semibold ${
+                      isDark ? "text-lighttext" : "text-darktext"
+                    }`}
                   >
                     App Store
                   </div>
@@ -228,11 +221,11 @@ const Hero: React.FC = () => {
 
               <a
                 href="https://play.google.com"
-                className="flex items-center space-x-3 px-6 py-3 rounded-xl border-2 transition-all hover:scale-105"
-                style={{
-                  borderColor: isDark ? "#374151" : "#d1d5db",
-                  backgroundColor: isDark ? "#1f2937" : "#ffffff",
-                }}
+                className={`flex items-center space-x-3 px-6 py-3 rounded-xl border-2 transition-all hover:scale-105 ${
+                  isDark
+                    ? "border-gray-700 bg-lightprybackground hover:bg-gray-700"
+                    : "border-gray-300 bg-white hover:bg-gray-50"
+                }`}
               >
                 <svg
                   className="w-8 h-8"
@@ -243,14 +236,16 @@ const Hero: React.FC = () => {
                 </svg>
                 <div className="text-left">
                   <div
-                    className="text-xs"
-                    style={{ color: isDark ? "#9ca3af" : "#6b7280" }}
+                    className={`text-xs ${
+                      isDark ? "text-gray-400" : "text-gray-500"
+                    }`}
                   >
                     Get it on
                   </div>
                   <div
-                    className="text-lg font-semibold"
-                    style={{ color: isDark ? "#f8f9fa" : "#111827" }}
+                    className={`text-lg font-semibold ${
+                      isDark ? "text-lighttext" : "text-darktext"
+                    }`}
                   >
                     Google Play
                   </div>
@@ -269,22 +264,15 @@ const Hero: React.FC = () => {
                 <a
                   key={idx}
                   href={social.href}
-                  className="p-2 rounded-full transition-all hover:scale-110"
-                  style={{
-                    backgroundColor: "transparent",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = isDark
-                      ? "#1f2937"
-                      : "#e5e7eb";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "transparent";
-                  }}
+                  className={`p-2 rounded-full transition-all hover:scale-110 ${
+                    isDark
+                      ? "hover:bg-lightprybackground"
+                      : "hover:bg-darkprybackground"
+                  }`}
                 >
                   <social.icon
                     size={24}
-                    style={{ color: isDark ? "#9ca3af" : "#6b7280" }}
+                    className={isDark ? "text-gray-400" : "text-gray-600"}
                   />
                 </a>
               ))}
@@ -296,26 +284,26 @@ const Hero: React.FC = () => {
             <div className="relative">
               {/* Phone Frame */}
               <div
-                className="relative w-80 h-[600px] rounded-[3rem] border-8 shadow-2xl overflow-hidden transition-colors"
-                style={{
-                  borderColor: isDark ? "#1f2937" : "#d1d5db",
-                  backgroundColor: isDark ? "#111827" : "#ffffff",
-                }}
+                className={`relative w-60 md:w-80 h-[600px] rounded-4xl border-8 shadow-2xl overflow-hidden transition-colors ${
+                  isDark
+                    ? "border-lightprybackground bg-lightbackground"
+                    : "border-gray-300 bg-white"
+                }`}
               >
                 {/* Notch */}
                 <div
-                  className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-7 rounded-b-3xl z-10"
-                  style={{ backgroundColor: isDark ? "#111827" : "#ffffff" }}
+                  className={`absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-7 rounded-b-3xl z-10 ${
+                    isDark ? "bg-lightbackground" : "bg-white"
+                  }`}
                 ></div>
 
                 {/* Phone Content */}
                 <div
-                  className="relative h-full p-4"
-                  style={{
-                    background: isDark
-                      ? "linear-gradient(to bottom right, rgba(110, 231, 183, 0.1), rgba(16, 185, 129, 0.1))"
-                      : "linear-gradient(to bottom right, rgba(16, 185, 129, 0.1), rgba(110, 231, 183, 0.1))",
-                  }}
+                  className={`relative h-full p-4 ${
+                    isDark
+                      ? "bg-gradient-to-br from-lightaccent/10 to-darkaccent/10"
+                      : "bg-gradient-to-br from-darkaccent/10 to-lightaccent/10"
+                  }`}
                 >
                   {/* Time & Status */}
                   <div className="flex justify-between items-center text-white text-sm font-semibold pt-2 px-2">
@@ -329,22 +317,10 @@ const Hero: React.FC = () => {
 
                   {/* Tabs */}
                   <div className="flex justify-center space-x-2 mt-4">
-                    <button
-                      className="px-4 py-1 rounded-full text-sm font-semibold"
-                      style={{
-                        backgroundColor: "#fbbf24",
-                        color: "#111827",
-                      }}
-                    >
+                    <button className="bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-semibold">
                       Pre-Order
                     </button>
-                    <button
-                      className="px-4 py-1 rounded-full text-sm"
-                      style={{
-                        backgroundColor: "rgba(107, 114, 128, 0.5)",
-                        color: "#ffffff",
-                      }}
-                    >
+                    <button className="bg-gray-600/50 text-white px-4 py-1 rounded-full text-sm">
                       Instant
                     </button>
                   </div>
@@ -355,8 +331,9 @@ const Hero: React.FC = () => {
                       Accepting Orders For Tomorrow's
                     </p>
                     <p
-                      className="text-sm font-semibold"
-                      style={{ color: isDark ? "#6ee7b7" : "#10b981" }}
+                      className={`text-sm font-semibold ${
+                        isDark ? "text-lightaccent" : "text-darkaccent"
+                      }`}
                     >
                       Breakfast
                     </p>
@@ -364,21 +341,12 @@ const Hero: React.FC = () => {
 
                   {/* Meal Card */}
                   <div
-                    className="mt-6 rounded-3xl overflow-hidden shadow-xl transition-all duration-500 backdrop-blur-sm"
-                    style={{
-                      backgroundColor: isDark
-                        ? "rgba(31, 41, 55, 0.9)"
-                        : "rgba(255, 255, 255, 0.9)",
-                    }}
+                    className={`mt-6 rounded-3xl overflow-hidden shadow-xl transition-all duration-500 backdrop-blur-sm ${
+                      isDark ? "bg-lightprybackground/90" : "bg-white/90"
+                    }`}
                   >
                     {/* Meal Image */}
-                    <div
-                      className="relative h-48 overflow-hidden"
-                      style={{
-                        background:
-                          "linear-gradient(to bottom right, #d97706, #ea580c)",
-                      }}
-                    >
+                    <div className="relative h-48 bg-gradient-to-br from-amber-600 to-orange-700 overflow-hidden">
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-white text-6xl opacity-30">🍜</div>
                       </div>
@@ -405,47 +373,45 @@ const Hero: React.FC = () => {
                     {/* Meal Info */}
                     <div className="p-4">
                       <h3
-                        className="text-xl font-bold mb-1 transition-colors"
-                        style={{ color: isDark ? "#f8f9fa" : "#111827" }}
+                        className={`text-xl font-bold mb-1 transition-colors ${
+                          isDark ? "text-lighttext" : "text-darktext"
+                        }`}
                       >
                         {meal.name}
                       </h3>
                       <p
-                        className="text-sm mb-3 transition-colors"
-                        style={{ color: isDark ? "#9ca3af" : "#6b7280" }}
+                        className={`text-sm mb-3 transition-colors ${
+                          isDark ? "text-gray-400" : "text-gray-600"
+                        }`}
                       >
                         {meal.time} • {meal.portions}
                       </p>
                       <p
-                        className="text-sm mb-4 transition-colors"
-                        style={{ color: isDark ? "#e5e7eb" : "#374151" }}
+                        className={`text-sm mb-4 transition-colors ${
+                          isDark ? "text-gray-300" : "text-gray-700"
+                        }`}
                       >
                         {meal.description}
                       </p>
 
                       {/* Buttons */}
                       <button
-                        className="w-full font-semibold py-3 rounded-xl mb-2 transition-all transform hover:scale-105"
-                        style={{
-                          backgroundColor: isDark ? "#6ee7b7" : "#10b981",
-                          color: "#111827",
-                        }}
+                        className={`w-full font-semibold py-3 rounded-xl mb-2 transition-all transform hover:scale-105 ${
+                          isDark
+                            ? "bg-lightaccent text-darktext"
+                            : "bg-darkaccent text-lighttext"
+                        }`}
                       >
                         🛒 Add to cart ({meal.price})
                       </button>
-                      <button
-                        className="w-full font-semibold py-3 rounded-xl transition-all transform hover:scale-105"
-                        style={{
-                          backgroundColor: "#fbbf24",
-                          color: "#111827",
-                        }}
-                      >
+                      <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-3 rounded-xl transition-all transform hover:scale-105">
                         📦 Subscribe & Save Cost
                       </button>
 
                       <p
-                        className="text-xs mt-3 flex items-center justify-center transition-colors"
-                        style={{ color: isDark ? "#9ca3af" : "#6b7280" }}
+                        className={`text-xs mt-3 flex items-center justify-center transition-colors ${
+                          isDark ? "text-gray-400" : "text-gray-600"
+                        }`}
                       >
                         <span className="inline-block w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
                         Pre-order closes in 17 hrs 17 min for this meal
@@ -458,8 +424,7 @@ const Hero: React.FC = () => {
                     {["Cart", "Extras", "Date", "More"].map((label) => (
                       <div
                         key={label}
-                        className="backdrop-blur-sm rounded-full p-2"
-                        style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+                        className="bg-white/20 backdrop-blur-sm rounded-full p-2"
                       >
                         <span className="text-white text-sm">{label}</span>
                       </div>
@@ -474,17 +439,19 @@ const Hero: React.FC = () => {
         {/* Scroll Indicator */}
         <div className="flex flex-col items-center mt-20 animate-bounce">
           <p
-            className="text-sm uppercase tracking-wider mb-2 transition-colors"
-            style={{ color: isDark ? "#9ca3af" : "#6b7280" }}
+            className={`text-sm uppercase tracking-wider mb-2 transition-colors ${
+              isDark ? "text-gray-400" : "text-gray-600"
+            }`}
           >
             Scroll to Explore
           </p>
           <svg
-            className="w-6 h-6 transition-colors"
+            className={`w-6 h-6 transition-colors ${
+              isDark ? "text-gray-400" : "text-gray-600"
+            }`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            style={{ color: isDark ? "#9ca3af" : "#6b7280" }}
           >
             <path
               strokeLinecap="round"
@@ -496,8 +463,280 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
+      {/* Footer */}
+      <footer
+        className={`py-16 transition-colors duration-500 ${
+          isDark
+            ? "bg-lightprybackground border-t border-gray-800"
+            : "bg-darkprybackground border-t border-gray-300"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            {/* Brand Column */}
+            <div className="space-y-6">
+              <div className="flex items-center space-x-2">
+                <div className="relative">
+                  <div className="w-10 h-10 bg-orange-500 rounded-lg transform -rotate-12"></div>
+                  <div
+                    className={`w-10 h-10 rounded-lg absolute top-0 left-0 transform rotate-12 opacity-70 ${
+                      isDark ? "bg-lightaccent" : "bg-darkaccent"
+                    }`}
+                  ></div>
+                </div>
+                <span
+                  className={`text-2xl font-bold ${
+                    isDark ? "text-lighttext" : "text-darktext"
+                  }`}
+                >
+                  Nourie
+                </span>
+              </div>
+              <p
+                className={`text-sm leading-relaxed ${
+                  isDark ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                Food that brings joy. Nigeria's leading mobile-first food
+                platform, making quality meals accessible to everyone.
+              </p>
+              <div className="space-y-3">
+                <div
+                  className={`flex items-center space-x-2 text-sm ${
+                    isDark ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                  <span>Wuse II, Abuja, FCT Nigeria</span>
+                </div>
+                <div
+                  className={`flex items-center space-x-2 text-sm ${
+                    isDark ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                  <span>+234 704 448 7002</span>
+                </div>
+                <div
+                  className={`flex items-center space-x-2 text-sm ${
+                    isDark ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span>hello@eatnourie.com</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Company Column */}
+            <div>
+              <h3
+                className={`font-bold mb-4 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                Company
+              </h3>
+              <ul className="space-y-3">
+                {["Home", "About", "How It Works", "Contact"].map((item) => (
+                  <li key={item}>
+                    <a
+                      href={`#${item.toLowerCase().replace(" ", "-")}`}
+                      className={`text-sm transition-colors hover:opacity-80 ${
+                        isDark ? "text-gray-400" : "text-gray-600"
+                      }`}
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Support Column */}
+            <div>
+              <h3
+                className={`font-bold mb-4 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                Support
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "Help Center",
+                  "Privacy Policy",
+                  "Terms of Service",
+                  "Cookie Policy",
+                ].map((item) => (
+                  <li key={item}>
+                    <a
+                      href={`#${item.toLowerCase().replace(" ", "-")}`}
+                      className={`text-sm transition-colors hover:opacity-80 ${
+                        isDark ? "text-gray-400" : "text-gray-600"
+                      }`}
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Get The App Column */}
+            <div>
+              <h3
+                className={`font-bold mb-4 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                Get The App
+              </h3>
+              <div className="space-y-3">
+                <a
+                  href="https://apps.apple.com"
+                  className={`flex items-center space-x-2 p-3 rounded-lg border transition-all hover:scale-105 ${
+                    isDark
+                      ? "border-gray-700 hover:bg-lightprybackground"
+                      : "border-gray-300 hover:bg-gray-100"
+                  }`}
+                >
+                  <svg
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                  </svg>
+                  <span
+                    className={`text-sm font-semibold ${
+                      isDark ? "text-lighttext" : "text-darktext"
+                    }`}
+                  >
+                    iOS App
+                  </span>
+                </a>
+                <a
+                  href="https://play.google.com"
+                  className={`flex items-center space-x-2 p-3 rounded-lg border transition-all hover:scale-105 ${
+                    isDark
+                      ? "border-gray-700 hover:bg-lightprybackground"
+                      : "border-gray-300 hover:bg-gray-100"
+                  }`}
+                >
+                  <svg
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                  </svg>
+                  <span
+                    className={`text-sm font-semibold ${
+                      isDark ? "text-lighttext" : "text-darktext"
+                    }`}
+                  >
+                    Android App
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div
+            className={`pt-8 b border-t flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 ${
+              isDark ? "border-gray-800" : "border-gray-300"
+            }`}
+          >
+            <p
+              className={`text-sm ${
+                isDark ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              © 2025 Noory. All Rights Reserved.
+            </p>
+
+            {/* Social Links */}
+            <div className="flex space-x-4">
+              {[
+                { icon: Instagram, href: "https://instagram.com" },
+                { icon: Twitter, href: "https://twitter.com" },
+                { icon: Linkedin, href: "https://linkedin.com" },
+                { icon: Facebook, href: "https://facebook.com" },
+              ].map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.href}
+                  className={`p-2 rounded-full transition-all hover:scale-110 ${
+                    isDark
+                      ? "hover:bg-lightprybackground"
+                      : "hover:bg-darkprybackground"
+                  }`}
+                >
+                  <social.icon
+                    size={20}
+                    className={isDark ? "text-gray-400" : "text-gray-600"}
+                  />
+                </a>
+              ))}
+            </div>
+
+            <p
+              className={`text-sm ${
+                isDark ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              Made with ❤️ in Abuja
+            </p>
+          </div>
+        </div>
+      </footer>
+
       {/* Extra section for scrolling demo */}
-      <div className="h-screen"></div>
+      {/* <div className="h-screen"> </div> */}
 
       <style>{`
         html {
