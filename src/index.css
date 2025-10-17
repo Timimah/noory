@@ -1,6 +1,23 @@
 @import "tailwindcss";
+
+@theme {
+  --color-lightbackground: #111827;
+  --color-lightprybackground: #1f2937;
+  --color-darkbackground: #f8f9fa;
+  --color-darkprybackground: #e5e7eb;
+  --color-lighttext: #f8f9fa;
+  --color-darktext: #111827;
+  --color-lightaccent: #6ee7b7;
+  --color-darkaccent: #10b981;
+
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -57,13 +74,13 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #f8f9fa;
+    background-color: #111827;
   }
   a:hover {
-    color: #747bff;
+    color: #f8f9fa;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #6ee7b7;
   }
 }
