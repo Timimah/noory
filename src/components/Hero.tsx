@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
                 className="text-2xl font-bold transition-colors"
                 style={{ color: isDark ? "#f8f9fa" : "#111827" }}
               >
-                Noory
+                Nooryland
               </span>
             </div>
 
