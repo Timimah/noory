@@ -32,6 +32,8 @@ const Hero: React.FC = () => {
   ];
 
   useEffect(() => {
+    console.log(isDark);
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -136,21 +138,25 @@ const Hero: React.FC = () => {
             {/* Right Side */}
             <div className="flex items-center space-x-4">
               <button
-                className="font-semibold px-6 py-2 rounded-full transition-all transform hover:scale-105"
-                style={{
-                  backgroundColor: "#f97316",
-                  color: "#111827",
-                }}
+                className={`font-semibold px-6 py-2 rounded-full transition-all transform hover:scale-105 ${
+                  isDark
+                    ? "bg-darkaccent text-lighttext"
+                    : "bg-lightaccent text-darktext"
+                }`}
+                // style={{
+                //   backgroundColor: "#f97316",
+                //   color: "#111827",
+                // }}
               >
                 Join Waitlist
               </button>
               <button
                 onClick={() => setIsDark(!isDark)}
-                className="p-2 rounded-full transition-colors"
-                style={{
-                  backgroundColor: isDark ? "#1f2937" : "#e5e7eb",
-                  color: isDark ? "#fbbf24" : "#6b7280",
-                }}
+                className={`p-2 rounded-full transition-colors ${
+                  isDark
+                    ? "bg-darkbackground text-darktext"
+                    : "bg-lightbackground text-lighttext"
+                }`}
               >
                 {isDark ? <Sun size={20} /> : <Moon size={20} />}
               </button>
