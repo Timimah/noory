@@ -480,7 +480,148 @@ const Hero: React.FC = () => {
           </svg>
         </div>
       </div>
+ {/* Waitlist Section */}
+      <div
+        className={`py-20 transition-colors duration-500 ${
+          isDark ? "bg-lightprybackground" : "bg-darkprybackground"
+        }`}
+      >
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          {/* Coming Soon Badge */}
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center space-x-2 px-6 py-2 border border-yellow-400 rounded-full">
+              <span className="text-yellow-400">✨</span>
+              <span
+                className={`text-sm font-medium ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                Coming Soon to Abuja
+              </span>
+            </div>
+          </div>
 
+          {/* Heading */}
+          <h2
+            className={`text-5xl md:text-6xl font-bold mb-6 ${
+              isDark ? "text-lighttext" : "text-darktext"
+            }`}
+          >
+            Be First in Line for the{" "}
+            <span className="text-yellow-400">Food Revolution</span>
+          </h2>
+
+          {/* Subheading */}
+          <p
+            className={`text-lg md:text-xl mb-12 max-w-3xl mx-auto ${
+              isDark ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            Join our exclusive waiting list and unlock special early-bird
+            benefits when Nourie launches. Limited spots available!
+          </p>
+
+          {/* Benefits Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+            <div
+              className={`p-6 rounded-2xl border transition-colors ${
+                isDark
+                  ? "bg-lightbackground border-gray-700"
+                  : "bg-white border-gray-300"
+              }`}
+            >
+              <div className="text-4xl mb-3">🎁</div>
+              <h3
+                className={`font-bold mb-2 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                30% Launch Discount
+              </h3>
+            </div>
+
+            <div
+              className={`p-6 rounded-2xl border transition-colors ${
+                isDark
+                  ? "bg-lightbackground border-gray-700"
+                  : "bg-white border-gray-300"
+              }`}
+            >
+              <div className="text-4xl mb-3">⚡</div>
+              <h3
+                className={`font-bold mb-2 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                Priority Access
+              </h3>
+            </div>
+
+            <div
+              className={`p-6 rounded-2xl border transition-colors ${
+                isDark
+                  ? "bg-lightbackground border-gray-700"
+                  : "bg-white border-gray-300"
+              }`}
+            >
+              <div className="text-4xl mb-3">🔔</div>
+              <h3
+                className={`font-bold mb-2 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                Exclusive Updates
+              </h3>
+            </div>
+
+            <div
+              className={`p-6 rounded-2xl border transition-colors ${
+                isDark
+                  ? "bg-lightbackground border-gray-700"
+                  : "bg-white border-gray-300"
+              }`}
+            >
+              <div className="text-4xl mb-3">✨</div>
+              <h3
+                className={`font-bold mb-2 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                Beta Testing Access
+              </h3>
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-10 py-4 rounded-full text-lg transition-all transform hover:scale-105 inline-flex items-center space-x-2">
+            <span>Join the Waiting List</span>
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+
+          {/* Social Proof */}
+          <p
+            className={`mt-6 text-sm ${
+              isDark ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
+            🔥 <span className="font-semibold">500+</span> people already
+            joined. Don't miss out!
+          </p>
+        </div>
+      </div>
+      
       {/* Footer */}
       <footer
         className={`py-16 transition-colors duration-500 ${
@@ -755,147 +896,7 @@ const Hero: React.FC = () => {
 
       {/* Extra section for scrolling demo */}
       {/* <div className="h-screen"> </div> */}
-      {/* Waitlist Section */}
-      <div
-        className={`py-20 transition-colors duration-500 ${
-          isDark ? "bg-lightprybackground" : "bg-darkprybackground"
-        }`}
-      >
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          {/* Coming Soon Badge */}
-          <div className="flex justify-center mb-8">
-            <div className="inline-flex items-center space-x-2 px-6 py-2 border border-yellow-400 rounded-full">
-              <span className="text-yellow-400">✨</span>
-              <span
-                className={`text-sm font-medium ${
-                  isDark ? "text-lighttext" : "text-darktext"
-                }`}
-              >
-                Coming Soon to Abuja
-              </span>
-            </div>
-          </div>
-
-          {/* Heading */}
-          <h2
-            className={`text-5xl md:text-6xl font-bold mb-6 ${
-              isDark ? "text-lighttext" : "text-darktext"
-            }`}
-          >
-            Be First in Line for the{" "}
-            <span className="text-yellow-400">Food Revolution</span>
-          </h2>
-
-          {/* Subheading */}
-          <p
-            className={`text-lg md:text-xl mb-12 max-w-3xl mx-auto ${
-              isDark ? "text-gray-300" : "text-gray-600"
-            }`}
-          >
-            Join our exclusive waiting list and unlock special early-bird
-            benefits when Nourie launches. Limited spots available!
-          </p>
-
-          {/* Benefits Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
-            <div
-              className={`p-6 rounded-2xl border transition-colors ${
-                isDark
-                  ? "bg-lightbackground border-gray-700"
-                  : "bg-white border-gray-300"
-              }`}
-            >
-              <div className="text-4xl mb-3">🎁</div>
-              <h3
-                className={`font-bold mb-2 ${
-                  isDark ? "text-lighttext" : "text-darktext"
-                }`}
-              >
-                30% Launch Discount
-              </h3>
-            </div>
-
-            <div
-              className={`p-6 rounded-2xl border transition-colors ${
-                isDark
-                  ? "bg-lightbackground border-gray-700"
-                  : "bg-white border-gray-300"
-              }`}
-            >
-              <div className="text-4xl mb-3">⚡</div>
-              <h3
-                className={`font-bold mb-2 ${
-                  isDark ? "text-lighttext" : "text-darktext"
-                }`}
-              >
-                Priority Access
-              </h3>
-            </div>
-
-            <div
-              className={`p-6 rounded-2xl border transition-colors ${
-                isDark
-                  ? "bg-lightbackground border-gray-700"
-                  : "bg-white border-gray-300"
-              }`}
-            >
-              <div className="text-4xl mb-3">🔔</div>
-              <h3
-                className={`font-bold mb-2 ${
-                  isDark ? "text-lighttext" : "text-darktext"
-                }`}
-              >
-                Exclusive Updates
-              </h3>
-            </div>
-
-            <div
-              className={`p-6 rounded-2xl border transition-colors ${
-                isDark
-                  ? "bg-lightbackground border-gray-700"
-                  : "bg-white border-gray-300"
-              }`}
-            >
-              <div className="text-4xl mb-3">✨</div>
-              <h3
-                className={`font-bold mb-2 ${
-                  isDark ? "text-lighttext" : "text-darktext"
-                }`}
-              >
-                Beta Testing Access
-              </h3>
-            </div>
-          </div>
-
-          {/* CTA Button */}
-          <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-10 py-4 rounded-full text-lg transition-all transform hover:scale-105 inline-flex items-center space-x-2">
-            <span>Join the Waiting List</span>
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-
-          {/* Social Proof */}
-          <p
-            className={`mt-6 text-sm ${
-              isDark ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
-            🔥 <span className="font-semibold">500+</span> people already
-            joined. Don't miss out!
-          </p>
-        </div>
-      </div>
+     
 
       {/* Extra section for scrolling demo */}
       {/* <div className="h-screen"></div> */}
