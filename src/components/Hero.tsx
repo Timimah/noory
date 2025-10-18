@@ -6,6 +6,11 @@ import {
   Twitter,
   Linkedin,
   Facebook,
+  ShoppingCart,
+  SubscriptIcon,
+  Bookmark,
+  MoreHorizontal,
+  Calendar,
 } from "lucide-react";
 
 const Hero: React.FC = () => {
@@ -138,15 +143,16 @@ const Hero: React.FC = () => {
             {/* Right Side */}
             <div className="flex items-center space-x-4">
               <button
-                className={`font-semibold px-6 py-2 rounded-full transition-all transform hover:scale-105 ${
-                  isDark
-                    ? "bg-darkaccent text-lighttext"
-                    : "bg-lightaccent text-darktext"
-                }`}
+                className={`font-semibold px-6 py-2 rounded-full transition-all transform hover:scale-105 bg-yellow-400 hover:bg-yellow-500 text-darktext`}
                 // style={{
                 //   backgroundColor: "#f97316",
                 //   color: "#111827",
                 // }}
+                // ${
+                //   isDark
+                //     ? "bg-darkaccent text-lighttext"
+                //     : "bg-lightaccent text-darktext"
+                // }
               >
                 Join Waitlist
               </button>
@@ -176,10 +182,7 @@ const Hero: React.FC = () => {
                 style={{ color: isDark ? "#f8f9fa" : "#111827" }}
               >
                 Food that{" "}
-                <span
-                  className="inline-block animate-pulse"
-                  style={{ color: "#f97316" }}
-                >
+                <span className="inline-block animate-pulse text-yellow-400">
                   brings joy
                 </span>
               </h1>
@@ -296,17 +299,15 @@ const Hero: React.FC = () => {
             <div className="relative">
               {/* Phone Frame */}
               <div
-                className="relative w-80 h-[600px] rounded-[3rem] border-8 shadow-2xl overflow-hidden transition-colors"
+                className={`relative w-80 h-[750px] rounded-[3rem] border-8 shadow-2xl overflow-hidden transition-colors ${
+                  isDark ? "bg-lightbackground/50" : "bg-lightprybackground/60"
+                }`}
                 style={{
                   borderColor: isDark ? "#1f2937" : "#d1d5db",
-                  backgroundColor: isDark ? "#111827" : "#ffffff",
                 }}
               >
                 {/* Notch */}
-                <div
-                  className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-7 rounded-b-3xl z-10"
-                  style={{ backgroundColor: isDark ? "#111827" : "#ffffff" }}
-                ></div>
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-3 rounded-b-3xl z-10 bg-black"></div>
 
                 {/* Phone Content */}
                 <div
@@ -431,7 +432,10 @@ const Hero: React.FC = () => {
                           color: "#111827",
                         }}
                       >
-                        🛒 Add to cart ({meal.price})
+                        <div className="flex items-center justify-center w-full gap-2">
+                          <ShoppingCart className="w-4" /> Add to cart{" "}
+                        </div>
+                        ({meal.price})
                       </button>
                       <button
                         className="w-full font-semibold py-3 rounded-xl transition-all transform hover:scale-105"
@@ -440,14 +444,16 @@ const Hero: React.FC = () => {
                           color: "#111827",
                         }}
                       >
-                        📦 Subscribe & Save Cost
+                        <div className="flex items-center justify-center gap-2">
+                          <Bookmark /> Subscribe & Save Cost
+                        </div>
                       </button>
 
                       <p
                         className="text-xs mt-3 flex items-center justify-center transition-colors"
                         style={{ color: isDark ? "#9ca3af" : "#6b7280" }}
                       >
-                        <span className="inline-block w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                        <span className="inline-block w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
                         Pre-order closes in 17 hrs 17 min for this meal
                       </p>
                     </div>
@@ -455,7 +461,7 @@ const Hero: React.FC = () => {
 
                   {/* Bottom Icons */}
                   <div className="absolute bottom-6 right-6 space-y-3">
-                    {["Cart", "Extras", "Date", "More"].map((label) => (
+                    {[<ShoppingCart  className="w-4"/>, <MoreHorizontal />, <Calendar />, "More"].map((label) => (
                       <div
                         key={label}
                         className="backdrop-blur-sm rounded-full p-2"
@@ -496,8 +502,150 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
+      {/* Waitlist Section */}
+      <div
+        className={`py-20 transition-colors duration-500 ${
+          isDark ? "bg-lightprybackground" : "bg-darkprybackground"
+        }`}
+      >
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          {/* Coming Soon Badge */}
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center space-x-2 px-6 py-2 border border-yellow-400 rounded-full">
+              <span className="text-yellow-400">✨</span>
+              <span
+                className={`text-sm font-medium ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                Coming Soon to Abuja
+              </span>
+            </div>
+          </div>
+
+          {/* Heading */}
+          <h2
+            className={`text-5xl md:text-6xl font-bold mb-6 ${
+              isDark ? "text-lighttext" : "text-darktext"
+            }`}
+          >
+            Be First in Line for the{" "}
+            <span className="text-yellow-400">Food Revolution</span>
+          </h2>
+
+          {/* Subheading */}
+          <p
+            className={`text-lg md:text-xl mb-12 max-w-3xl mx-auto ${
+              isDark ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            Join our exclusive waiting list and unlock special early-bird
+            benefits when Nourie launches. Limited spots available!
+          </p>
+
+          {/* Benefits Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+            <div
+              className={`p-6 rounded-2xl border transition-colors ${
+                isDark
+                  ? "bg-lightbackground border-gray-700"
+                  : "bg-white border-gray-300"
+              }`}
+            >
+              <div className="text-4xl mb-3">🎁</div>
+              <h3
+                className={`font-bold mb-2 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                30% Launch Discount
+              </h3>
+            </div>
+
+            <div
+              className={`p-6 rounded-2xl border transition-colors ${
+                isDark
+                  ? "bg-lightbackground border-gray-700"
+                  : "bg-white border-gray-300"
+              }`}
+            >
+              <div className="text-4xl mb-3">⚡</div>
+              <h3
+                className={`font-bold mb-2 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                Priority Access
+              </h3>
+            </div>
+
+            <div
+              className={`p-6 rounded-2xl border transition-colors ${
+                isDark
+                  ? "bg-lightbackground border-gray-700"
+                  : "bg-white border-gray-300"
+              }`}
+            >
+              <div className="text-4xl mb-3">🔔</div>
+              <h3
+                className={`font-bold mb-2 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                Exclusive Updates
+              </h3>
+            </div>
+
+            <div
+              className={`p-6 rounded-2xl border transition-colors ${
+                isDark
+                  ? "bg-lightbackground border-gray-700"
+                  : "bg-white border-gray-300"
+              }`}
+            >
+              <div className="text-4xl mb-3">✨</div>
+              <h3
+                className={`font-bold mb-2 ${
+                  isDark ? "text-lighttext" : "text-darktext"
+                }`}
+              >
+                Beta Testing Access
+              </h3>
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-10 py-4 rounded-full text-lg transition-all transform hover:scale-105 inline-flex items-center space-x-2">
+            <span>Join the Waiting List</span>
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+
+          {/* Social Proof */}
+          <p
+            className={`mt-6 text-sm ${
+              isDark ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
+            🔥 <span className="font-semibold">500+</span> people already
+            joined. Don't miss out!
+          </p>
+        </div>
+      </div>
+
       {/* Extra section for scrolling demo */}
-      <div className="h-screen"></div>
+      {/* <div className="h-screen"></div> */}
 
       <style>{`
         html {
