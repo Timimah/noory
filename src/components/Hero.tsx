@@ -66,8 +66,10 @@ const Hero: React.FC = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? `${
-                isDark ? "bg-lightbackground/95" : "bg-darkbackground/95"
-              } backdrop-blur-md shadow-lg`
+                isDark
+                  ? "bg-yellow-500/60 backdrop-blur-2xl"
+                  : "bg-darkbackground/50 backdrop-blur-2xl"
+              } backdrop-blur-xl shadow-lg`
             : "bg-transparent"
         }`}
       >
@@ -439,7 +441,12 @@ const Hero: React.FC = () => {
 
                   {/* Bottom Icons */}
                   <div className="absolute bottom-6 right-6 space-y-3">
-                    {[<ShoppingCart  className="w-4"/>, <MoreHorizontal />, <Calendar />, "More"].map((label) => (
+                    {[
+                      <ShoppingCart className="w-4" />,
+                      <MoreHorizontal />,
+                      <Calendar />,
+                      "More",
+                    ].map((label) => (
                       <div
                         key={label}
                         className="bg-white/20 backdrop-blur-sm rounded-full p-2"
@@ -480,7 +487,7 @@ const Hero: React.FC = () => {
           </svg>
         </div>
       </div>
- {/* Waitlist Section */}
+      {/* Waitlist Section */}
       <div
         className={`py-20 transition-colors duration-500 ${
           isDark ? "bg-lightprybackground" : "bg-darkprybackground"
@@ -621,7 +628,7 @@ const Hero: React.FC = () => {
           </p>
         </div>
       </div>
-      
+
       {/* Footer */}
       <footer
         className={`py-16 transition-colors duration-500 ${
@@ -896,7 +903,6 @@ const Hero: React.FC = () => {
 
       {/* Extra section for scrolling demo */}
       {/* <div className="h-screen"> </div> */}
-     
 
       {/* Extra section for scrolling demo */}
       {/* <div className="h-screen"></div> */}
