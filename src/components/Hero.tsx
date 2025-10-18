@@ -626,8 +626,8 @@ const Hero: React.FC = () => {
       <footer
         className={`py-16 transition-colors duration-500 ${
           isDark
-            ? "bg-lightprybackground border-t border-gray-800"
-            : "bg-darkprybackground border-t border-gray-300"
+            ? "bg-black/50 border-t border-gray-600"
+            : "bg-white/50 border-t border-gray-300"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6">
